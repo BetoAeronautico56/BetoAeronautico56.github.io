@@ -1,0 +1,552 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Tu Estética | Corte, Uñas y Estilo</title>
+  <meta name="description" content="Estética con barbería y uñas. Servicios profesionales, precios claros y agenda por WhatsApp." />
+  <style>
+    :root{
+      --bg:#0b0b10;
+      --card:#141421;
+      --muted:#9aa0a6;
+      --text:#f5f6f7;
+      --brand:#b08cff;
+      --brand2:#58e6d9;
+      --line:rgba(255,255,255,.08);
+      --shadow: 0 18px 45px rgba(0,0,0,.35);
+      --radius: 18px;
+      --max: 1120px;
+      --font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans";
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:var(--font);
+      color:var(--text);
+      background:
+        radial-gradient(900px 500px at 20% -5%, rgba(176,140,255,.18), transparent 60%),
+        radial-gradient(900px 500px at 80% 0%, rgba(88,230,217,.12), transparent 55%),
+        var(--bg);
+      line-height:1.5;
+    }
+    a{color:inherit;text-decoration:none}
+    .container{max-width:var(--max); margin:0 auto; padding:0 18px}
+    .nav{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter: blur(10px);
+      background: rgba(11,11,16,.75);
+      border-bottom:1px solid var(--line);
+    }
+    .nav-inner{
+      display:flex; align-items:center; justify-content:space-between;
+      padding:14px 0;
+      gap:12px;
+    }
+    .brand{
+      display:flex; align-items:center; gap:10px;
+      font-weight:800;
+      letter-spacing:.3px;
+    }
+    .logo{
+      width:36px; height:36px; border-radius:12px;
+      background: linear-gradient(135deg, var(--brand), var(--brand2));
+      box-shadow: 0 10px 30px rgba(176,140,255,.25);
+    }
+    .menu{display:flex; gap:16px; align-items:center}
+    .menu a{
+      font-size:14px; color:rgba(245,246,247,.9);
+      padding:8px 10px; border-radius:999px;
+    }
+    .menu a:hover{background:rgba(255,255,255,.06)}
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      gap:10px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.06);
+      color:var(--text);
+      padding:10px 14px;
+      border-radius:999px;
+      cursor:pointer;
+      transition: transform .15s ease, background .15s ease, border-color .15s ease;
+      font-weight:700;
+      font-size:14px;
+      white-space:nowrap;
+    }
+    .btn:hover{transform: translateY(-1px); background: rgba(255,255,255,.10); border-color: rgba(255,255,255,.14)}
+    .btn-primary{
+      border:none;
+      background: linear-gradient(135deg, var(--brand), var(--brand2));
+      color:#0b0b10;
+      box-shadow: 0 14px 35px rgba(176,140,255,.18);
+    }
+    .btn-primary:hover{transform: translateY(-1px) scale(1.01)}
+    .hero{
+      padding: 56px 0 20px;
+    }
+    .hero-grid{
+      display:grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap:22px;
+      align-items:stretch;
+    }
+    .pill{
+      display:inline-flex; align-items:center; gap:8px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.05);
+      color: rgba(245,246,247,.92);
+      padding:8px 12px;
+      border-radius:999px;
+      font-size:13px;
+      width:fit-content;
+    }
+    h1{
+      margin:14px 0 10px;
+      font-size:44px;
+      line-height:1.08;
+      letter-spacing:-.6px;
+    }
+    .lead{
+      color: rgba(245,246,247,.82);
+      font-size:16px;
+      max-width: 60ch;
+    }
+    .hero-actions{display:flex; gap:10px; margin-top:18px; flex-wrap:wrap}
+    .card{
+      background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.03));
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+    .hero-card{
+      padding:18px;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+      gap:14px;
+    }
+    .kpis{
+      display:grid; grid-template-columns: repeat(3, 1fr);
+      gap:10px;
+    }
+    .kpi{
+      padding:12px;
+      border-radius:16px;
+      border:1px solid var(--line);
+      background: rgba(20,20,33,.65);
+    }
+    .kpi b{font-size:18px}
+    .kpi span{display:block; color:var(--muted); font-size:12px; margin-top:4px}
+    .imgbox{
+      border-radius: 16px;
+      border:1px dashed rgba(255,255,255,.18);
+      background:
+        radial-gradient(450px 200px at 40% 0%, rgba(176,140,255,.18), transparent 55%),
+        radial-gradient(450px 200px at 70% 20%, rgba(88,230,217,.12), transparent 60%),
+        rgba(255,255,255,.03);
+      height: 220px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding: 14px;
+      color: rgba(245,246,247,.75);
+      text-align:center;
+      font-size:13px;
+    }
+
+    section{padding: 34px 0}
+    .section-title{
+      display:flex; align-items:flex-end; justify-content:space-between; gap:10px; flex-wrap:wrap;
+      margin-bottom:14px;
+    }
+    h2{margin:0; font-size:26px; letter-spacing:-.2px}
+    .hint{color:var(--muted); font-size:14px}
+    .grid-3{display:grid; grid-template-columns: repeat(3, 1fr); gap:14px}
+    .grid-2{display:grid; grid-template-columns: repeat(2, 1fr); gap:14px}
+    .service, .price, .quote, .contact{
+      padding:16px;
+      border-radius: var(--radius);
+      border:1px solid var(--line);
+      background: rgba(20,20,33,.55);
+    }
+    .service h3{margin:2px 0 6px; font-size:16px}
+    .service p{margin:0; color:rgba(245,246,247,.8); font-size:14px}
+    .tag{
+      display:inline-flex; align-items:center; gap:6px;
+      font-size:12px;
+      color: rgba(245,246,247,.85);
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.05);
+      padding:6px 10px;
+      border-radius:999px;
+      margin-bottom:10px;
+      width:fit-content;
+    }
+    .icon{
+      width:10px; height:10px; border-radius:4px;
+      background: linear-gradient(135deg, var(--brand), var(--brand2));
+      display:inline-block;
+    }
+
+    .price-row{display:flex; justify-content:space-between; gap:10px; margin:10px 0}
+    .price-row small{color:var(--muted)}
+    .price-row b{font-size:15px}
+
+    .gallery{
+      display:grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap:10px;
+    }
+    .ph{
+      border-radius: 14px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.04);
+      height: 110px;
+      position:relative;
+      overflow:hidden;
+    }
+    .ph::after{
+      content:"";
+      position:absolute; inset:0;
+      background:
+        radial-gradient(180px 120px at 20% 10%, rgba(176,140,255,.18), transparent 60%),
+        radial-gradient(180px 120px at 80% 30%, rgba(88,230,217,.12), transparent 55%);
+      opacity:.9;
+    }
+    .ph span{
+      position:absolute; left:10px; bottom:8px;
+      font-size:12px; color: rgba(245,246,247,.78);
+      z-index:2;
+    }
+
+    .quote p{margin:0; color:rgba(245,246,247,.85); font-size:14px}
+    .quote b{display:block; margin-top:10px; font-size:13px; color:rgba(245,246,247,.95)}
+    .quote small{color:var(--muted)}
+
+    .contact-grid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:14px;
+      align-items:stretch;
+    }
+    .contact ul{margin:10px 0 0; padding-left:18px; color:rgba(245,246,247,.83); font-size:14px}
+    .contact li{margin:6px 0}
+    .map{
+      border-radius: var(--radius);
+      border:1px solid var(--line);
+      overflow:hidden;
+      min-height: 290px;
+      background: rgba(255,255,255,.04);
+    }
+    iframe{width:100%; height:100%; border:0}
+
+    footer{
+      border-top:1px solid var(--line);
+      padding:24px 0;
+      color:rgba(245,246,247,.75);
+      font-size:13px;
+    }
+
+    /* WhatsApp floating button */
+    .wa{
+      position:fixed;
+      right:18px;
+      bottom:18px;
+      z-index:80;
+      display:flex;
+      align-items:center;
+      gap:10px;
+      padding:12px 14px;
+      border-radius: 999px;
+      background: #25D366;
+      color:#06210f;
+      font-weight:900;
+      box-shadow: 0 18px 40px rgba(0,0,0,.35);
+      border: none;
+      cursor:pointer;
+    }
+    .wa svg{width:18px;height:18px}
+    .wa:hover{transform: translateY(-1px)}
+    .divider{height:1px; background:var(--line); margin: 12px 0}
+
+    /* Responsive */
+    @media (max-width: 980px){
+      .hero-grid{grid-template-columns: 1fr}
+      h1{font-size:36px}
+      .grid-3{grid-template-columns: 1fr}
+      .grid-2{grid-template-columns: 1fr}
+      .gallery{grid-template-columns: repeat(3, 1fr)}
+      .contact-grid{grid-template-columns: 1fr}
+      .menu{display:none}
+    }
+  </style>
+</head>
+<body>
+
+  <header class="nav">
+    <div class="container nav-inner">
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <div>
+          <div style="font-size:14px;opacity:.9;">Tu Estética</div>
+          <div style="font-size:12px;color:var(--muted);font-weight:600;">Corte • Uñas • Barbería</div>
+        </div>
+      </div>
+
+      <nav class="menu" aria-label="Menú">
+        <a href="#servicios">Servicios</a>
+        <a href="#precios">Precios</a>
+        <a href="#galeria">Galería</a>
+        <a href="#opiniones">Opiniones</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+
+      <div style="display:flex;gap:10px;align-items:center">
+        <a class="btn" href="#contacto">Ver ubicación</a>
+        <a class="btn btn-primary" href="#contacto">Agendar</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="pill">✨ Atención profesional • Precios claros • Agenda rápida</div>
+          <h1>Tu mejor versión, en una sola visita.</h1>
+          <p class="lead">
+            Cortes, barbería y uñas en un mismo lugar. Te atendemos con estilo, higiene y detalle.
+            Agenda por WhatsApp y llega directo a tu cita.
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#contacto">Agendar por WhatsApp</a>
+            <a class="btn" href="#servicios">Ver servicios</a>
+          </div>
+
+          <div class="divider"></div>
+
+          <div class="kpis">
+            <div class="kpi">
+              <b>+5 años</b>
+              <span>de experiencia</span>
+            </div>
+            <div class="kpi">
+              <b>Higiene</b>
+              <span>herramienta esterilizada</span>
+            </div>
+            <div class="kpi">
+              <b>Rápido</b>
+              <span>agenda por WhatsApp</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card hero-card">
+          <div class="imgbox">
+            <div>
+              <b>Tu foto aquí</b><br/>
+              Cambia esta caja por una imagen real del local (ideal 1200×800).<br/>
+              Puedes usar una foto de: sillones, estación de barbería o uñas.
+            </div>
+          </div>
+
+          <div>
+            <div class="tag"><span class="icon"></span> Promoción de la semana</div>
+            <div style="font-weight:800;font-size:16px;">Corte + ceja + lavado</div>
+            <div style="color:var(--muted);font-size:13px;margin-top:3px;">Pregunta por disponibilidad y horarios.</div>
+          </div>
+
+          <div style="display:flex; gap:10px; flex-wrap:wrap;">
+            <a class="btn btn-primary" href="#precios">Ver precios</a>
+            <a class="btn" href="#galeria">Ver galería</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICIOS -->
+    <section id="servicios">
+      <div class="container">
+        <div class="section-title">
+          <h2>Servicios</h2>
+          <div class="hint">Cambia nombres y descripciones según lo que ofrezcan</div>
+        </div>
+
+        <div class="grid-3">
+          <div class="service">
+            <div class="tag"><span class="icon"></span> Estética</div>
+            <h3>Corte dama / caballero</h3>
+            <p>Asesoría de estilo, lavado, peinado y acabado con detalles.</p>
+          </div>
+
+          <div class="service">
+            <div class="tag"><span class="icon"></span> Barbería</div>
+            <h3>Fade, barba y ceja</h3>
+            <p>Perfilado, navaja, toalla caliente (opcional) y finalizadores.</p>
+          </div>
+
+          <div class="service">
+            <div class="tag"><span class="icon"></span> Uñas</div>
+            <h3>Gel, acrílico y diseño</h3>
+            <p>Manicure, gelish, acrílico, encapsulado, francés y más.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRECIOS -->
+    <section id="precios">
+      <div class="container">
+        <div class="section-title">
+          <h2>Precios</h2>
+          <div class="hint">Ejemplo: ajusta a tus costos reales</div>
+        </div>
+
+        <div class="grid-3">
+          <div class="price">
+            <div class="tag"><span class="icon"></span> Barbería</div>
+            <div class="price-row"><small>Corte</small><b>$150</b></div>
+            <div class="price-row"><small>Barba</small><b>$120</b></div>
+            <div class="price-row"><small>Corte + Barba</small><b>$240</b></div>
+            <div class="price-row"><small>Cejas</small><b>$40</b></div>
+          </div>
+
+          <div class="price">
+            <div class="tag"><span class="icon"></span> Estética</div>
+            <div class="price-row"><small>Corte dama</small><b>$180</b></div>
+            <div class="price-row"><small>Peinado</small><b>$250</b></div>
+            <div class="price-row"><small>Planchado</small><b>$200</b></div>
+            <div class="price-row"><small>Maquillaje</small><b>$350</b></div>
+          </div>
+
+          <div class="price">
+            <div class="tag"><span class="icon"></span> Uñas</div>
+            <div class="price-row"><small>Manicure + gelish</small><b>$220</b></div>
+            <div class="price-row"><small>Acrílico (básico)</small><b>$350</b></div>
+            <div class="price-row"><small>Diseño (desde)</small><b>$30</b></div>
+            <div class="price-row"><small>Retiro</small><b>$80</b></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GALERÍA -->
+    <section id="galeria">
+      <div class="container">
+        <div class="section-title">
+          <h2>Galería</h2>
+          <div class="hint">Reemplaza estos cuadros por fotos reales (Instagram funciona perfecto)</div>
+        </div>
+
+        <div class="gallery">
+          <div class="ph"><span>Corte</span></div>
+          <div class="ph"><span>Barba</span></div>
+          <div class="ph"><span>Fade</span></div>
+          <div class="ph"><span>Uñas</span></div>
+          <div class="ph"><span>Diseño</span></div>
+          <div class="ph"><span>Peinado</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- OPINIONES -->
+    <section id="opiniones">
+      <div class="container">
+        <div class="section-title">
+          <h2>Opiniones</h2>
+          <div class="hint">Pon 3–6 reseñas reales para subir confianza</div>
+        </div>
+
+        <div class="grid-3">
+          <div class="quote">
+            <p>“Me dejaron el corte justo como lo pedí. Limpio, rápido y buen trato.”</p>
+            <b>Juan M.</b>
+            <small>Reseña</small>
+          </div>
+          <div class="quote">
+            <p>“Uñas súper bonitas y duraderas, y el lugar está muy limpio.”</p>
+            <b>María L.</b>
+            <small>Reseña</small>
+          </div>
+          <div class="quote">
+            <p>“Excelente barbería, la barba quedó definida y con buen acabado.”</p>
+            <b>Carlos R.</b>
+            <small>Reseña</small>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACTO -->
+    <section id="contacto">
+      <div class="container">
+        <div class="section-title">
+          <h2>Contacto</h2>
+          <div class="hint">Incluye WhatsApp, horarios y ubicación</div>
+        </div>
+
+        <div class="contact-grid">
+          <div class="contact">
+            <div class="tag"><span class="icon"></span> Información</div>
+            <ul>
+              <li><b>Dirección:</b> Calle Ejemplo #123, Colonia, Ciudad</li>
+              <li><b>Horario:</b> Lun–Sáb 10:00–19:00</li>
+              <li><b>Tel/WhatsApp:</b> +52 55 0000 0000</li>
+              <li><b>Instagram:</b> @tuestetica</li>
+            </ul>
+
+            <div style="margin-top:14px; display:flex; gap:10px; flex-wrap:wrap;">
+              <a class="btn btn-primary" id="btnWhatsApp" href="#">Agendar por WhatsApp</a>
+              <a class="btn" href="#precios">Ver precios</a>
+            </div>
+
+            <div class="divider"></div>
+
+            <small style="color:var(--muted)">
+              Tip: agrega tu negocio a Google Maps y pega el iframe aquí para que la gente llegue fácil.
+            </small>
+          </div>
+
+          <div class="map" aria-label="Mapa">
+            <!-- Reemplaza este iframe por el de tu Google Maps -->
+            <iframe
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2104.0330203353965!2d-99.08847474894841!3d20.245146869040276!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d17b70c70008dd%3A0x222217953ee79308!2sParroquia%20de%20San%20Agust%C3%ADn!5e0!3m2!1ses!2smx!4v1770233138861!5m2!1ses!2smx">
+            </iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container" style="display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap;">
+      <div>© <span id="year"></span> Tu Estética. Todos los derechos reservados.</div>
+      <div style="color:var(--muted)">Hecho con ♥ — Agenda rápida por WhatsApp</div>
+    </div>
+  </footer>
+
+  <!-- WhatsApp Floating Button -->
+  <button class="wa" id="waFloat" type="button" aria-label="Agendar por WhatsApp">
+    <svg viewBox="0 0 32 32" aria-hidden="true">
+      <path d="M19.11 17.53c-.28-.14-1.64-.81-1.9-.9-.26-.1-.45-.14-.64.14-.19.28-.73.9-.9 1.09-.16.19-.33.21-.61.07-.28-.14-1.18-.43-2.25-1.37-.83-.74-1.39-1.65-1.55-1.93-.16-.28-.02-.43.12-.57.12-.12.28-.33.43-.5.14-.16.19-.28.28-.47.1-.19.05-.35-.02-.5-.07-.14-.64-1.54-.88-2.1-.23-.56-.47-.48-.64-.48h-.54c-.19 0-.5.07-.76.35-.26.28-1 1-1 2.43 0 1.43 1.02 2.81 1.16 3 .14.19 2.01 3.07 4.88 4.3.68.29 1.2.46 1.61.59.68.22 1.29.19 1.77.12.54-.08 1.64-.67 1.87-1.32.23-.64.23-1.2.16-1.32-.07-.12-.26-.19-.54-.33z" fill="#06210f"/>
+      <path d="M16 2.67C8.64 2.67 2.67 8.64 2.67 16c0 2.36.62 4.67 1.79 6.7L3.2 29.33l6.8-1.24A13.24 13.24 0 0 0 16 29.33c7.36 0 13.33-5.97 13.33-13.33S23.36 2.67 16 2.67zm0 24.2c-2.05 0-4.06-.54-5.83-1.57l-.42-.24-4.03.73.77-3.93-.26-.44A10.5 10.5 0 1 1 16 26.87z" fill="#06210f"/>
+    </svg>
+    WhatsApp
+  </button>
+
+  <script>
+    // Cambia tu número y mensaje aquí:
+    const phone = "525500000000"; // Ej: 525512345678 (52 + lada + número)
+    const message = "Hola, quiero agendar una cita. ¿Qué horarios tienen disponibles?";
+    const waLink = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+
+    document.getElementById("btnWhatsApp").href = waLink;
+    document.getElementById("waFloat").addEventListener("click", () => window.open(waLink, "_blank"));
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

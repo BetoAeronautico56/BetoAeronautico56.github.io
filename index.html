@@ -1,552 +1,544 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Tu Estética | Corte, Uñas y Estilo</title>
-  <meta name="description" content="Estética con barbería y uñas. Servicios profesionales, precios claros y agenda por WhatsApp." />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Para Ti, Mi Amor 💘</title>
+  <meta name="theme-color" content="#ff4d6d"/>
+
   <style>
     :root{
-      --bg:#0b0b10;
-      --card:#141421;
-      --muted:#9aa0a6;
-      --text:#f5f6f7;
-      --brand:#b08cff;
-      --brand2:#58e6d9;
-      --line:rgba(255,255,255,.08);
-      --shadow: 0 18px 45px rgba(0,0,0,.35);
-      --radius: 18px;
-      --max: 1120px;
-      --font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans";
+      --bg1:#0b1020;
+      --bg2:#120a1a;
+      --card: rgba(255,255,255,.08);
+      --stroke: rgba(255,255,255,.14);
+      --txt: rgba(255,255,255,.92);
+      --muted: rgba(255,255,255,.70);
+      --pink:#ff4d6d;
+      --rose:#ff8fab;
+      --gold:#ffd6a5;
+      --shadow: 0 20px 60px rgba(0,0,0,.35);
+      --radius: 26px;
     }
+
     *{box-sizing:border-box}
+    html,body{height:100%}
     body{
       margin:0;
-      font-family:var(--font);
-      color:var(--text);
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      color:var(--txt);
+      overflow-x:hidden;
       background:
-        radial-gradient(900px 500px at 20% -5%, rgba(176,140,255,.18), transparent 60%),
-        radial-gradient(900px 500px at 80% 0%, rgba(88,230,217,.12), transparent 55%),
-        var(--bg);
-      line-height:1.5;
+        radial-gradient(1200px 600px at 20% 20%, rgba(255,77,109,.22), transparent 60%),
+        radial-gradient(1000px 700px at 80% 30%, rgba(255,143,171,.18), transparent 60%),
+        radial-gradient(900px 700px at 50% 90%, rgba(255,214,165,.12), transparent 60%),
+        linear-gradient(180deg, var(--bg1), var(--bg2));
     }
-    a{color:inherit;text-decoration:none}
-    .container{max-width:var(--max); margin:0 auto; padding:0 18px}
-    .nav{
-      position:sticky; top:0; z-index:50;
-      backdrop-filter: blur(10px);
-      background: rgba(11,11,16,.75);
-      border-bottom:1px solid var(--line);
+
+    .stars{
+      position:fixed; inset:0;
+      pointer-events:none;
+      opacity:.35;
+      background-image:
+        radial-gradient(1px 1px at 10% 20%, #fff, transparent 50%),
+        radial-gradient(1px 1px at 30% 80%, #fff, transparent 50%),
+        radial-gradient(1px 1px at 70% 30%, #fff, transparent 50%),
+        radial-gradient(1px 1px at 85% 70%, #fff, transparent 50%),
+        radial-gradient(1px 1px at 55% 55%, #fff, transparent 50%),
+        radial-gradient(1px 1px at 40% 40%, #fff, transparent 50%),
+        radial-gradient(1px 1px at 15% 65%, #fff, transparent 50%),
+        radial-gradient(1px 1px at 90% 15%, #fff, transparent 50%);
+      background-size: 800px 800px;
+      animation: drift 18s linear infinite;
+      filter: blur(.2px);
     }
-    .nav-inner{
-      display:flex; align-items:center; justify-content:space-between;
-      padding:14px 0;
-      gap:12px;
+    @keyframes drift{ from{transform:translateY(0)} to{transform:translateY(-40px)} }
+
+    .wrap{
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 42px 18px 80px;
+      position:relative;
     }
-    .brand{
-      display:flex; align-items:center; gap:10px;
-      font-weight:800;
-      letter-spacing:.3px;
-    }
-    .logo{
-      width:36px; height:36px; border-radius:12px;
-      background: linear-gradient(135deg, var(--brand), var(--brand2));
-      box-shadow: 0 10px 30px rgba(176,140,255,.25);
-    }
-    .menu{display:flex; gap:16px; align-items:center}
-    .menu a{
-      font-size:14px; color:rgba(245,246,247,.9);
-      padding:8px 10px; border-radius:999px;
-    }
-    .menu a:hover{background:rgba(255,255,255,.06)}
-    .btn{
-      display:inline-flex; align-items:center; justify-content:center;
-      gap:10px;
-      border:1px solid var(--line);
-      background: rgba(255,255,255,.06);
-      color:var(--text);
-      padding:10px 14px;
-      border-radius:999px;
-      cursor:pointer;
-      transition: transform .15s ease, background .15s ease, border-color .15s ease;
-      font-weight:700;
-      font-size:14px;
-      white-space:nowrap;
-    }
-    .btn:hover{transform: translateY(-1px); background: rgba(255,255,255,.10); border-color: rgba(255,255,255,.14)}
-    .btn-primary{
-      border:none;
-      background: linear-gradient(135deg, var(--brand), var(--brand2));
-      color:#0b0b10;
-      box-shadow: 0 14px 35px rgba(176,140,255,.18);
-    }
-    .btn-primary:hover{transform: translateY(-1px) scale(1.01)}
+
     .hero{
-      padding: 56px 0 20px;
-    }
-    .hero-grid{
       display:grid;
-      grid-template-columns: 1.15fr .85fr;
-      gap:22px;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 18px;
       align-items:stretch;
     }
-    .pill{
-      display:inline-flex; align-items:center; gap:8px;
-      border:1px solid var(--line);
-      background: rgba(255,255,255,.05);
-      color: rgba(245,246,247,.92);
-      padding:8px 12px;
-      border-radius:999px;
-      font-size:13px;
-      width:fit-content;
+
+    @media (max-width: 860px){
+      .hero{ grid-template-columns: 1fr; }
     }
-    h1{
-      margin:14px 0 10px;
-      font-size:44px;
-      line-height:1.08;
-      letter-spacing:-.6px;
-    }
-    .lead{
-      color: rgba(245,246,247,.82);
-      font-size:16px;
-      max-width: 60ch;
-    }
-    .hero-actions{display:flex; gap:10px; margin-top:18px; flex-wrap:wrap}
+
     .card{
-      background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.03));
-      border:1px solid var(--line);
+      background: var(--card);
+      border: 1px solid var(--stroke);
       border-radius: var(--radius);
       box-shadow: var(--shadow);
+      overflow:hidden;
+      position:relative;
+      backdrop-filter: blur(14px);
     }
-    .hero-card{
-      padding:18px;
+
+    .header{
+      padding: 28px 26px 20px;
+      position:relative;
+    }
+    .badge{
+      display:inline-flex;
+      gap:8px;
+      align-items:center;
+      padding: 7px 12px;
+      border-radius: 999px;
+      background: rgba(255,77,109,.14);
+      border: 1px solid rgba(255,77,109,.25);
+      color: rgba(255,255,255,.88);
+      font-size: 13px;
+      letter-spacing:.2px;
+      user-select:none;
+    }
+    .title{
+      margin: 14px 0 8px;
+      font-size: clamp(28px, 3.4vw, 44px);
+      line-height: 1.05;
+      letter-spacing:-.5px;
+    }
+    .subtitle{
+      margin:0;
+      color: var(--muted);
+      font-size: 15.5px;
+      line-height:1.45;
+      max-width: 60ch;
+    }
+    .spark{
+      position:absolute;
+      inset:auto -80px -120px auto;
+      width: 280px;
+      height: 280px;
+      background: radial-gradient(circle at 30% 30%, rgba(255,77,109,.55), transparent 60%),
+                  radial-gradient(circle at 70% 70%, rgba(255,214,165,.35), transparent 60%);
+      filter: blur(10px);
+      transform: rotate(18deg);
+      opacity:.8;
+      pointer-events:none;
+    }
+
+    .side{
+      padding: 22px;
       display:flex;
       flex-direction:column;
-      justify-content:space-between;
-      gap:14px;
+      gap: 14px;
     }
-    .kpis{
-      display:grid; grid-template-columns: repeat(3, 1fr);
-      gap:10px;
+
+    .counter{
+      display:grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
     }
-    .kpi{
-      padding:12px;
-      border-radius:16px;
-      border:1px solid var(--line);
-      background: rgba(20,20,33,.65);
+    @media (max-width: 520px){
+      .counter{ grid-template-columns: repeat(2, 1fr); }
     }
-    .kpi b{font-size:18px}
-    .kpi span{display:block; color:var(--muted); font-size:12px; margin-top:4px}
-    .imgbox{
-      border-radius: 16px;
-      border:1px dashed rgba(255,255,255,.18);
-      background:
-        radial-gradient(450px 200px at 40% 0%, rgba(176,140,255,.18), transparent 55%),
-        radial-gradient(450px 200px at 70% 20%, rgba(88,230,217,.12), transparent 60%),
-        rgba(255,255,255,.03);
-      height: 220px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      padding: 14px;
-      color: rgba(245,246,247,.75);
+    .tile{
+      padding: 16px 12px;
+      border-radius: 18px;
+      background: rgba(0,0,0,.18);
+      border: 1px solid rgba(255,255,255,.10);
       text-align:center;
-      font-size:13px;
+    }
+    .num{
+      font-size: 26px;
+      font-weight: 800;
+      letter-spacing: .5px;
+    }
+    .lbl{
+      margin-top: 6px;
+      font-size: 12px;
+      color: rgba(255,255,255,.72);
+      letter-spacing: .7px;
+      text-transform: uppercase;
     }
 
-    section{padding: 34px 0}
-    .section-title{
-      display:flex; align-items:flex-end; justify-content:space-between; gap:10px; flex-wrap:wrap;
-      margin-bottom:14px;
+    .btnrow{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top: 6px;
     }
-    h2{margin:0; font-size:26px; letter-spacing:-.2px}
-    .hint{color:var(--muted); font-size:14px}
-    .grid-3{display:grid; grid-template-columns: repeat(3, 1fr); gap:14px}
-    .grid-2{display:grid; grid-template-columns: repeat(2, 1fr); gap:14px}
-    .service, .price, .quote, .contact{
-      padding:16px;
-      border-radius: var(--radius);
-      border:1px solid var(--line);
-      background: rgba(20,20,33,.55);
+    button{
+      border:0;
+      cursor:pointer;
+      padding: 12px 14px;
+      border-radius: 16px;
+      font-weight: 700;
+      letter-spacing:.2px;
+      transition: transform .12s ease, filter .12s ease, background .12s ease;
+      color: rgba(255,255,255,.92);
+      background: rgba(255,255,255,.10);
+      border: 1px solid rgba(255,255,255,.14);
+      user-select:none;
     }
-    .service h3{margin:2px 0 6px; font-size:16px}
-    .service p{margin:0; color:rgba(245,246,247,.8); font-size:14px}
-    .tag{
-      display:inline-flex; align-items:center; gap:6px;
-      font-size:12px;
-      color: rgba(245,246,247,.85);
-      border:1px solid var(--line);
-      background: rgba(255,255,255,.05);
-      padding:6px 10px;
-      border-radius:999px;
-      margin-bottom:10px;
-      width:fit-content;
+    button:hover{ transform: translateY(-1px); filter: brightness(1.04); }
+    .primary{
+      background: linear-gradient(135deg, rgba(255,77,109,.92), rgba(255,143,171,.72));
+      border: 1px solid rgba(255,77,109,.35);
+      color: #1a0b12;
     }
-    .icon{
-      width:10px; height:10px; border-radius:4px;
-      background: linear-gradient(135deg, var(--brand), var(--brand2));
-      display:inline-block;
+    .ghost{
+      background: rgba(0,0,0,.18);
     }
 
-    .price-row{display:flex; justify-content:space-between; gap:10px; margin:10px 0}
-    .price-row small{color:var(--muted)}
-    .price-row b{font-size:15px}
+    .message{
+      padding: 22px 26px 26px;
+      border-top: 1px solid rgba(255,255,255,.10);
+    }
+    .message h2{
+      margin: 0 0 10px;
+      font-size: 18px;
+      letter-spacing:.2px;
+    }
+    .message p{
+      margin: 0;
+      color: rgba(255,255,255,.84);
+      line-height:1.6;
+      font-size: 15.5px;
+    }
+    .type{
+      white-space: pre-wrap;
+    }
 
     .gallery{
+      margin-top: 18px;
       display:grid;
-      grid-template-columns: repeat(6, 1fr);
-      gap:10px;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
     }
-    .ph{
-      border-radius: 14px;
-      border:1px solid var(--line);
-      background: rgba(255,255,255,.04);
-      height: 110px;
+    @media (max-width: 860px){
+      .gallery{ grid-template-columns: 1fr; }
+    }
+    .mini{
+      padding: 16px;
+      border-radius: 22px;
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.10);
+      min-height: 92px;
       position:relative;
       overflow:hidden;
     }
-    .ph::after{
-      content:"";
-      position:absolute; inset:0;
-      background:
-        radial-gradient(180px 120px at 20% 10%, rgba(176,140,255,.18), transparent 60%),
-        radial-gradient(180px 120px at 80% 30%, rgba(88,230,217,.12), transparent 55%);
-      opacity:.9;
+    .mini .emoji{
+      font-size: 22px;
     }
-    .ph span{
-      position:absolute; left:10px; bottom:8px;
-      font-size:12px; color: rgba(245,246,247,.78);
-      z-index:2;
+    .mini .t{
+      margin-top: 8px;
+      font-weight:800;
+      letter-spacing:.2px;
     }
-
-    .quote p{margin:0; color:rgba(245,246,247,.85); font-size:14px}
-    .quote b{display:block; margin-top:10px; font-size:13px; color:rgba(245,246,247,.95)}
-    .quote small{color:var(--muted)}
-
-    .contact-grid{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap:14px;
-      align-items:stretch;
-    }
-    .contact ul{margin:10px 0 0; padding-left:18px; color:rgba(245,246,247,.83); font-size:14px}
-    .contact li{margin:6px 0}
-    .map{
-      border-radius: var(--radius);
-      border:1px solid var(--line);
-      overflow:hidden;
-      min-height: 290px;
-      background: rgba(255,255,255,.04);
-    }
-    iframe{width:100%; height:100%; border:0}
-
-    footer{
-      border-top:1px solid var(--line);
-      padding:24px 0;
-      color:rgba(245,246,247,.75);
-      font-size:13px;
+    .mini .d{
+      margin-top: 6px;
+      color: rgba(255,255,255,.74);
+      font-size: 14px;
+      line-height:1.4;
     }
 
-    /* WhatsApp floating button */
-    .wa{
-      position:fixed;
-      right:18px;
-      bottom:18px;
-      z-index:80;
-      display:flex;
-      align-items:center;
-      gap:10px;
-      padding:12px 14px;
-      border-radius: 999px;
-      background: #25D366;
-      color:#06210f;
-      font-weight:900;
-      box-shadow: 0 18px 40px rgba(0,0,0,.35);
-      border: none;
-      cursor:pointer;
+    /* floating hearts */
+    .heart{
+      position: fixed;
+      left: 50%;
+      top: 60%;
+      font-size: 18px;
+      opacity: 0;
+      pointer-events:none;
+      transform: translate(-50%, -50%) scale(1);
+      animation: floatUp 1.6s ease forwards;
+      filter: drop-shadow(0 6px 14px rgba(0,0,0,.25));
     }
-    .wa svg{width:18px;height:18px}
-    .wa:hover{transform: translateY(-1px)}
-    .divider{height:1px; background:var(--line); margin: 12px 0}
+    @keyframes floatUp{
+      0%{ opacity:0; transform: translate(-50%, -50%) scale(.7); }
+      10%{ opacity:1; }
+      100%{ opacity:0; transform: translate(calc(-50% + var(--dx)), calc(-50% - 220px)) scale(1.25); }
+    }
 
-    /* Responsive */
-    @media (max-width: 980px){
-      .hero-grid{grid-template-columns: 1fr}
-      h1{font-size:36px}
-      .grid-3{grid-template-columns: 1fr}
-      .grid-2{grid-template-columns: 1fr}
-      .gallery{grid-template-columns: repeat(3, 1fr)}
-      .contact-grid{grid-template-columns: 1fr}
-      .menu{display:none}
+    .footer{
+      margin-top: 18px;
+      text-align:center;
+      color: rgba(255,255,255,.55);
+      font-size: 13px;
     }
+    a{ color: rgba(255,214,165,.95); text-decoration: none; }
+    a:hover{ text-decoration: underline; }
   </style>
 </head>
+
 <body>
+  <div class="stars"></div>
 
-  <header class="nav">
-    <div class="container nav-inner">
-      <div class="brand">
-        <div class="logo" aria-hidden="true"></div>
-        <div>
-          <div style="font-size:14px;opacity:.9;">Tu Estética</div>
-          <div style="font-size:12px;color:var(--muted);font-weight:600;">Corte • Uñas • Barbería</div>
-        </div>
-      </div>
-
-      <nav class="menu" aria-label="Menú">
-        <a href="#servicios">Servicios</a>
-        <a href="#precios">Precios</a>
-        <a href="#galeria">Galería</a>
-        <a href="#opiniones">Opiniones</a>
-        <a href="#contacto">Contacto</a>
-      </nav>
-
-      <div style="display:flex;gap:10px;align-items:center">
-        <a class="btn" href="#contacto">Ver ubicación</a>
-        <a class="btn btn-primary" href="#contacto">Agendar</a>
-      </div>
-    </div>
-  </header>
-
-  <main>
-    <!-- HERO -->
-    <section class="hero">
-      <div class="container hero-grid">
-        <div>
-          <div class="pill">✨ Atención profesional • Precios claros • Agenda rápida</div>
-          <h1>Tu mejor versión, en una sola visita.</h1>
-          <p class="lead">
-            Cortes, barbería y uñas en un mismo lugar. Te atendemos con estilo, higiene y detalle.
-            Agenda por WhatsApp y llega directo a tu cita.
+  <div class="wrap">
+    <div class="hero">
+      <section class="card">
+        <div class="header">
+          <div class="badge">💘 Regalo de San Valentín</div>
+          <h1 class="title">Para <span id="name">Mi Amor</span> ✨</h1>
+          <p class="subtitle">
+            Esta página es un pedacito de lo que siento por ti: algo que crece, que se renueva,
+            y que todos los días me recuerda que encontrarte fue un regalo.
           </p>
-
-          <div class="hero-actions">
-            <a class="btn btn-primary" href="#contacto">Agendar por WhatsApp</a>
-            <a class="btn" href="#servicios">Ver servicios</a>
-          </div>
-
-          <div class="divider"></div>
-
-          <div class="kpis">
-            <div class="kpi">
-              <b>+5 años</b>
-              <span>de experiencia</span>
-            </div>
-            <div class="kpi">
-              <b>Higiene</b>
-              <span>herramienta esterilizada</span>
-            </div>
-            <div class="kpi">
-              <b>Rápido</b>
-              <span>agenda por WhatsApp</span>
-            </div>
-          </div>
+          <div class="spark"></div>
         </div>
 
-        <div class="card hero-card">
-          <div class="imgbox">
-            <div>
-              <b>Tu foto aquí</b><br/>
-              Cambia esta caja por una imagen real del local (ideal 1200×800).<br/>
-              Puedes usar una foto de: sillones, estación de barbería o uñas.
+        <div class="message">
+          <h2>Un mensaje para ti ❤️</h2>
+          <p id="typed" class="type"></p>
+
+          <div class="gallery">
+            <div class="mini">
+              <div class="emoji">🌙</div>
+              <div class="t">Promesa</div>
+              <div class="d">Elegirte todos los días, en lo simple y en lo difícil.</div>
+            </div>
+            <div class="mini">
+              <div class="emoji">🌷</div>
+              <div class="t">Detalles</div>
+              <div class="d">Cuidarte con palabras bonitas y acciones pequeñas pero constantes.</div>
+            </div>
+            <div class="mini">
+              <div class="emoji">🔥</div>
+              <div class="t">Futuro</div>
+              <div class="d">Seguir sumando historias contigo y construir algo aún más grande.</div>
             </div>
           </div>
-
-          <div>
-            <div class="tag"><span class="icon"></span> Promoción de la semana</div>
-            <div style="font-weight:800;font-size:16px;">Corte + ceja + lavado</div>
-            <div style="color:var(--muted);font-size:13px;margin-top:3px;">Pregunta por disponibilidad y horarios.</div>
-          </div>
-
-          <div style="display:flex; gap:10px; flex-wrap:wrap;">
-            <a class="btn btn-primary" href="#precios">Ver precios</a>
-            <a class="btn" href="#galeria">Ver galería</a>
-          </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- SERVICIOS -->
-    <section id="servicios">
-      <div class="container">
-        <div class="section-title">
-          <h2>Servicios</h2>
-          <div class="hint">Cambia nombres y descripciones según lo que ofrezcan</div>
+      <aside class="card side">
+        <div>
+          <div class="badge">⏳ Tiempo juntos desde el 9 de julio de 2021</div>
         </div>
 
-        <div class="grid-3">
-          <div class="service">
-            <div class="tag"><span class="icon"></span> Estética</div>
-            <h3>Corte dama / caballero</h3>
-            <p>Asesoría de estilo, lavado, peinado y acabado con detalles.</p>
+        <div class="counter" aria-label="contador">
+          <div class="tile">
+            <div class="num" id="days">0</div>
+            <div class="lbl">Días</div>
           </div>
-
-          <div class="service">
-            <div class="tag"><span class="icon"></span> Barbería</div>
-            <h3>Fade, barba y ceja</h3>
-            <p>Perfilado, navaja, toalla caliente (opcional) y finalizadores.</p>
+          <div class="tile">
+            <div class="num" id="hours">0</div>
+            <div class="lbl">Horas</div>
           </div>
-
-          <div class="service">
-            <div class="tag"><span class="icon"></span> Uñas</div>
-            <h3>Gel, acrílico y diseño</h3>
-            <p>Manicure, gelish, acrílico, encapsulado, francés y más.</p>
+          <div class="tile">
+            <div class="num" id="minutes">0</div>
+            <div class="lbl">Minutos</div>
           </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- PRECIOS -->
-    <section id="precios">
-      <div class="container">
-        <div class="section-title">
-          <h2>Precios</h2>
-          <div class="hint">Ejemplo: ajusta a tus costos reales</div>
-        </div>
-
-        <div class="grid-3">
-          <div class="price">
-            <div class="tag"><span class="icon"></span> Barbería</div>
-            <div class="price-row"><small>Corte</small><b>$150</b></div>
-            <div class="price-row"><small>Barba</small><b>$120</b></div>
-            <div class="price-row"><small>Corte + Barba</small><b>$240</b></div>
-            <div class="price-row"><small>Cejas</small><b>$40</b></div>
-          </div>
-
-          <div class="price">
-            <div class="tag"><span class="icon"></span> Estética</div>
-            <div class="price-row"><small>Corte dama</small><b>$180</b></div>
-            <div class="price-row"><small>Peinado</small><b>$250</b></div>
-            <div class="price-row"><small>Planchado</small><b>$200</b></div>
-            <div class="price-row"><small>Maquillaje</small><b>$350</b></div>
-          </div>
-
-          <div class="price">
-            <div class="tag"><span class="icon"></span> Uñas</div>
-            <div class="price-row"><small>Manicure + gelish</small><b>$220</b></div>
-            <div class="price-row"><small>Acrílico (básico)</small><b>$350</b></div>
-            <div class="price-row"><small>Diseño (desde)</small><b>$30</b></div>
-            <div class="price-row"><small>Retiro</small><b>$80</b></div>
+          <div class="tile">
+            <div class="num" id="seconds">0</div>
+            <div class="lbl">Segundos</div>
           </div>
         </div>
-      </div>
-    </section>
 
-    <!-- GALERÍA -->
-    <section id="galeria">
-      <div class="container">
-        <div class="section-title">
-          <h2>Galería</h2>
-          <div class="hint">Reemplaza estos cuadros por fotos reales (Instagram funciona perfecto)</div>
+        <div class="btnrow">
+          <button class="primary" id="surpriseBtn">Abrir sorpresa 💌</button>
+          <button class="ghost" id="heartsBtn">Lluvia de corazones 💖</button>
+          <button class="ghost" id="musicBtn">Música (opcional) 🎵</button>
         </div>
 
-        <div class="gallery">
-          <div class="ph"><span>Corte</span></div>
-          <div class="ph"><span>Barba</span></div>
-          <div class="ph"><span>Fade</span></div>
-          <div class="ph"><span>Uñas</span></div>
-          <div class="ph"><span>Diseño</span></div>
-          <div class="ph"><span>Peinado</span></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- OPINIONES -->
-    <section id="opiniones">
-      <div class="container">
-        <div class="section-title">
-          <h2>Opiniones</h2>
-          <div class="hint">Pon 3–6 reseñas reales para subir confianza</div>
-        </div>
-
-        <div class="grid-3">
-          <div class="quote">
-            <p>“Me dejaron el corte justo como lo pedí. Limpio, rápido y buen trato.”</p>
-            <b>Juan M.</b>
-            <small>Reseña</small>
-          </div>
-          <div class="quote">
-            <p>“Uñas súper bonitas y duraderas, y el lugar está muy limpio.”</p>
-            <b>María L.</b>
-            <small>Reseña</small>
-          </div>
-          <div class="quote">
-            <p>“Excelente barbería, la barba quedó definida y con buen acabado.”</p>
-            <b>Carlos R.</b>
-            <small>Reseña</small>
+        <div class="mini" style="min-height:auto;">
+          <div class="emoji">💡</div>
+          <div class="t">Tip</div>
+          <div class="d">
+            Cambia el texto y agrega una foto si quieres. (Te dejo instrucciones abajo).
           </div>
         </div>
-      </div>
-    </section>
-
-    <!-- CONTACTO -->
-    <section id="contacto">
-      <div class="container">
-        <div class="section-title">
-          <h2>Contacto</h2>
-          <div class="hint">Incluye WhatsApp, horarios y ubicación</div>
-        </div>
-
-        <div class="contact-grid">
-          <div class="contact">
-            <div class="tag"><span class="icon"></span> Información</div>
-            <ul>
-              <li><b>Dirección:</b> Calle Ejemplo #123, Colonia, Ciudad</li>
-              <li><b>Horario:</b> Lun–Sáb 10:00–19:00</li>
-              <li><b>Tel/WhatsApp:</b> +52 55 0000 0000</li>
-              <li><b>Instagram:</b> @tuestetica</li>
-            </ul>
-
-            <div style="margin-top:14px; display:flex; gap:10px; flex-wrap:wrap;">
-              <a class="btn btn-primary" id="btnWhatsApp" href="#">Agendar por WhatsApp</a>
-              <a class="btn" href="#precios">Ver precios</a>
-            </div>
-
-            <div class="divider"></div>
-
-            <small style="color:var(--muted)">
-              Tip: agrega tu negocio a Google Maps y pega el iframe aquí para que la gente llegue fácil.
-            </small>
-          </div>
-
-          <div class="map" aria-label="Mapa">
-            <!-- Reemplaza este iframe por el de tu Google Maps -->
-            <iframe
-              loading="lazy"
-              referrerpolicy="no-referrer-when-downgrade"
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2104.0330203353965!2d-99.08847474894841!3d20.245146869040276!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d17b70c70008dd%3A0x222217953ee79308!2sParroquia%20de%20San%20Agust%C3%ADn!5e0!3m2!1ses!2smx!4v1770233138861!5m2!1ses!2smx">
-            </iframe>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="container" style="display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap;">
-      <div>© <span id="year"></span> Tu Estética. Todos los derechos reservados.</div>
-      <div style="color:var(--muted)">Hecho con ♥ — Agenda rápida por WhatsApp</div>
+      </aside>
     </div>
-  </footer>
 
-  <!-- WhatsApp Floating Button -->
-  <button class="wa" id="waFloat" type="button" aria-label="Agendar por WhatsApp">
-    <svg viewBox="0 0 32 32" aria-hidden="true">
-      <path d="M19.11 17.53c-.28-.14-1.64-.81-1.9-.9-.26-.1-.45-.14-.64.14-.19.28-.73.9-.9 1.09-.16.19-.33.21-.61.07-.28-.14-1.18-.43-2.25-1.37-.83-.74-1.39-1.65-1.55-1.93-.16-.28-.02-.43.12-.57.12-.12.28-.33.43-.5.14-.16.19-.28.28-.47.1-.19.05-.35-.02-.5-.07-.14-.64-1.54-.88-2.1-.23-.56-.47-.48-.64-.48h-.54c-.19 0-.5.07-.76.35-.26.28-1 1-1 2.43 0 1.43 1.02 2.81 1.16 3 .14.19 2.01 3.07 4.88 4.3.68.29 1.2.46 1.61.59.68.22 1.29.19 1.77.12.54-.08 1.64-.67 1.87-1.32.23-.64.23-1.2.16-1.32-.07-.12-.26-.19-.54-.33z" fill="#06210f"/>
-      <path d="M16 2.67C8.64 2.67 2.67 8.64 2.67 16c0 2.36.62 4.67 1.79 6.7L3.2 29.33l6.8-1.24A13.24 13.24 0 0 0 16 29.33c7.36 0 13.33-5.97 13.33-13.33S23.36 2.67 16 2.67zm0 24.2c-2.05 0-4.06-.54-5.83-1.57l-.42-.24-4.03.73.77-3.93-.26-.44A10.5 10.5 0 1 1 16 26.87z" fill="#06210f"/>
-    </svg>
-    WhatsApp
-  </button>
+    <div class="footer">
+      Hecho con amor. 💞
+    </div>
+  </div>
+
+  <!-- Modal simple -->
+  <div id="modal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,.55); backdrop-filter: blur(6px); z-index:50;">
+    <div style="max-width:720px; margin: 8vh auto; padding: 0 14px;">
+      <div class="card" style="padding: 18px 18px 14px;">
+        <div style="display:flex; align-items:center; justify-content:space-between; gap:10px;">
+          <div class="badge">💌 Sorpresa</div>
+          <button id="closeModal" class="ghost" style="padding:10px 12px; border-radius:14px;">Cerrar ✖</button>
+        </div>
+        <h2 style="margin:14px 0 8px; font-size:22px;">Hoy quiero decirte esto…</h2>
+        <p style="margin:0; color: rgba(255,255,255,.85); line-height:1.7; font-size: 15.5px;">
+          Gracias por ser mi lugar seguro, mi risa favorita y mi paz.  
+          Si tuviera que elegir de nuevo, te elegiría a ti — una y mil veces.  
+          <br><br>
+          ¿Me regalas otro capítulo contigo? 💖
+        </p>
+
+        <div style="margin-top:14px; display:flex; gap:10px; flex-wrap:wrap;">
+          <button class="primary" id="yesBtn">Sí, siempre 🥰</button>
+          <button class="ghost" id="kissBtn">Te mando un beso 😘</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Audio opcional: pega una url mp3 tuya o deja apagado -->
+  <audio id="audio" preload="none">
+    <!-- Ejemplo: <source src="tu-cancion.mp3" type="audio/mpeg"> -->
+  </audio>
 
   <script>
-    // Cambia tu número y mensaje aquí:
-    const phone = "525500000000"; // Ej: 525512345678 (52 + lada + número)
-    const message = "Hola, quiero agendar una cita. ¿Qué horarios tienen disponibles?";
-    const waLink = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+    /********************
+     * CONFIGURACIÓN
+     ********************/
+    const novia = "Mi Amor"; // <- Cambia aquí el nombre
+    document.getElementById("name").textContent = novia;
 
-    document.getElementById("btnWhatsApp").href = waLink;
-    document.getElementById("waFloat").addEventListener("click", () => window.open(waLink, "_blank"));
-    document.getElementById("year").textContent = new Date().getFullYear();
+    // Importante: en JS los meses empiezan en 0 (enero=0)
+    // 9 de julio de 2021 a las 00:00:00 (hora local del dispositivo)
+    const startDate = new Date(2021, 6, 9, 0, 0, 0);
+
+    const loveText = [
+      "Amor, desde que llegaste a mi vida todo se siente más bonito.",
+      "Gracias por cada abrazo, por cada risa y por cada momento que se queda conmigo.",
+      "No necesito un día especial para amarte… pero hoy quiero recordarte que eres mi persona favorita.",
+      "",
+      "Te amo con calma, con fuerza, con ternura y con ganas de futuro. 💖"
+    ].join("\n");
+
+    /********************
+     * CONTADOR
+     ********************/
+    const $days = document.getElementById("days");
+    const $hours = document.getElementById("hours");
+    const $minutes = document.getElementById("minutes");
+    const $seconds = document.getElementById("seconds");
+
+    function pad2(n){ return String(n).padStart(2,"0"); }
+
+    function updateCounter(){
+      const now = new Date();
+      let diff = now - startDate; // ms
+      if(diff < 0) diff = 0;
+
+      const totalSeconds = Math.floor(diff / 1000);
+      const days = Math.floor(totalSeconds / (3600 * 24));
+      const remDay = totalSeconds % (3600 * 24);
+      const hours = Math.floor(remDay / 3600);
+      const remHour = remDay % 3600;
+      const minutes = Math.floor(remHour / 60);
+      const seconds = remHour % 60;
+
+      $days.textContent = days;
+      $hours.textContent = pad2(hours);
+      $minutes.textContent = pad2(minutes);
+      $seconds.textContent = pad2(seconds);
+    }
+    updateCounter();
+    setInterval(updateCounter, 1000);
+
+    /********************
+     * EFECTO TYPEWRITER
+     ********************/
+    const typed = document.getElementById("typed");
+    let i = 0;
+    function typeWriter(){
+      typed.textContent = loveText.slice(0, i);
+      i++;
+      if(i <= loveText.length){
+        const ch = loveText[i-1];
+        const speed = (ch === "\n") ? 250 : (ch === " " ? 18 : 26);
+        setTimeout(typeWriter, speed);
+      }
+    }
+    typeWriter();
+
+    /********************
+     * CORAZONES
+     ********************/
+    function spawnHeart(x, y){
+      const heart = document.createElement("div");
+      heart.className = "heart";
+      heart.textContent = Math.random() < 0.5 ? "💖" : "💘";
+      const dx = (Math.random() * 140 - 70).toFixed(0) + "px";
+      heart.style.setProperty("--dx", dx);
+      heart.style.left = x + "px";
+      heart.style.top = y + "px";
+      heart.style.fontSize = (16 + Math.random()*18).toFixed(0) + "px";
+      document.body.appendChild(heart);
+      setTimeout(()=>heart.remove(), 1700);
+    }
+
+    document.addEventListener("click", (e)=>{
+      // Corazón al hacer click en cualquier parte
+      spawnHeart(e.clientX, e.clientY);
+    });
+
+    document.getElementById("heartsBtn").addEventListener("click", ()=>{
+      // mini "lluvia" de corazones
+      for(let k=0; k<18; k++){
+        setTimeout(()=>{
+          const x = Math.random() * window.innerWidth;
+          const y = window.innerHeight * (0.65 + Math.random()*0.25);
+          spawnHeart(x, y);
+        }, k*70);
+      }
+    });
+
+    /********************
+     * MODAL SORPRESA
+     ********************/
+    const modal = document.getElementById("modal");
+    document.getElementById("surpriseBtn").addEventListener("click", ()=>{
+      modal.style.display = "block";
+    });
+    document.getElementById("closeModal").addEventListener("click", ()=>{
+      modal.style.display = "none";
+    });
+    modal.addEventListener("click", (e)=>{
+      if(e.target === modal) modal.style.display = "none";
+    });
+
+    document.getElementById("yesBtn").addEventListener("click", ()=>{
+      modal.style.display = "none";
+      // celebracion
+      for(let k=0; k<30; k++){
+        setTimeout(()=>{
+          const x = Math.random() * window.innerWidth;
+          const y = window.innerHeight * (0.55 + Math.random()*0.35);
+          spawnHeart(x, y);
+        }, k*45);
+      }
+    });
+
+    document.getElementById("kissBtn").addEventListener("click", ()=>{
+      // pequeño detalle divertido
+      const x = window.innerWidth * (0.4 + Math.random()*0.2);
+      const y = window.innerHeight * 0.55;
+      spawnHeart(x, y);
+      alert("😘 Beso enviado con amor (y con nervios jajaja).");
+    });
+
+    /********************
+     * MÚSICA (OPCIONAL)
+     ********************/
+    const audio = document.getElementById("audio");
+    let playing = false;
+    document.getElementById("musicBtn").addEventListener("click", async ()=>{
+      // Si no agregas un source al audio, no sonará (es opcional)
+      if(!audio.querySelector("source")){
+        alert("Para activar música, agrega un <source src='tu-cancion.mp3'> dentro del <audio> en el HTML 🙂");
+        return;
+      }
+      try{
+        if(!playing){
+          await audio.play();
+          playing = true;
+        }else{
+          audio.pause();
+          playing = false;
+        }
+      }catch(err){
+        alert("Tu navegador bloqueó el audio automático. Intenta de nuevo con otro click 🙂");
+      }
+    });
   </script>
 </body>
 </html>
