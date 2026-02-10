@@ -277,7 +277,7 @@
     .photo-slider img{
       position: absolute; inset: 0;
       width: 100%; height: 100%;
-      object-fit: cover;
+      object-fit: contain;
       opacity: 0; transition: opacity 1s ease-in-out;
     }
     .photo-slider img.active{ opacity: 1; }
@@ -395,7 +395,7 @@
 
   <!-- Audio opcional: pega una url mp3 tuya o deja apagado -->
   <audio id="audio" preload="none">
-    <!-- Ejemplo: <source src="tu-cancion.mp3" type="audio/mpeg"> -->
+    <source src="musica/Green Day - 21 Guns.mp3" type="audio/mpeg">
   </audio>
 
   <script>
