@@ -267,6 +267,20 @@
     }
     a{ color: rgba(255,214,165,.95); text-decoration: none; }
     a:hover{ text-decoration: underline; }
+
+    /* Estilos para el slider de fotos */
+    .photo-slider{
+      padding: 0;
+      height: 260px; /* Puedes ajustar la altura aquí */
+      position: relative;
+    }
+    .photo-slider img{
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      opacity: 0; transition: opacity 1s ease-in-out;
+    }
+    .photo-slider img.active{ opacity: 1; }
   </style>
 </head>
 
@@ -340,12 +354,12 @@
           <button class="ghost" id="musicBtn">Música (opcional) 🎵</button>
         </div>
 
-        <div class="mini" style="min-height:auto;">
-          <div class="emoji">💡</div>
-          <div class="t">Tip</div>
-          <div class="d">
-            Cambia el texto y agrega una foto si quieres. (Te dejo instrucciones abajo).
-          </div>
+        <div class="mini photo-slider">
+          <!-- Asegúrate de que la carpeta "fotos" exista junto al index.html -->
+          <img src="fotos/foto 1.jpg" class="active" alt="Foto 1">
+          <img src="fotos/foto 2.jpg" alt="Foto 2">
+          <img src="fotos/foto 3.jpg" alt="Foto 3">
+          <img src="fotos/foto 4.jpg" alt="Foto 4">
         </div>
       </aside>
     </div>
@@ -539,6 +553,19 @@
         alert("Tu navegador bloqueó el audio automático. Intenta de nuevo con otro click 🙂");
       }
     });
+
+    /********************
+     * SLIDER DE FOTOS
+     ********************/
+    const slides = document.querySelectorAll('.photo-slider img');
+    let currentSlide = 0;
+    if(slides.length > 0){
+      setInterval(() => {
+        slides[currentSlide].classList.remove('active');
+        currentSlide = (currentSlide + 1) % slides.length;
+        slides[currentSlide].classList.add('active');
+      }, 5000); // Cambio cada 5 segundos
+    }
   </script>
 </body>
 </html>
