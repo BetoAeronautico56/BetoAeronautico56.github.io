@@ -8,16 +8,16 @@
 
   <style>
     :root{
-      --bg1:#0b1020;
-      --bg2:#120a1a;
-      --card: rgba(255,255,255,.08);
-      --stroke: rgba(255,255,255,.14);
-      --txt: rgba(255,255,255,.92);
-      --muted: rgba(255,255,255,.70);
+      --bg1: #fff0f3;
+      --bg2: #ffe5ec;
+      --card: rgba(255,255,255,.55);
+      --stroke: rgba(255,255,255,.6);
+      --txt: #590d22;
+      --muted: #a4133c;
       --pink:#ff4d6d;
       --rose:#ff8fab;
-      --gold:#ffd6a5;
-      --shadow: 0 20px 60px rgba(0,0,0,.35);
+      --gold:#ffb703;
+      --shadow: 0 20px 60px rgba(89,13,34,.15);
       --radius: 26px;
     }
 
@@ -40,14 +40,14 @@
       pointer-events:none;
       opacity:.35;
       background-image:
-        radial-gradient(1px 1px at 10% 20%, #fff, transparent 50%),
-        radial-gradient(1px 1px at 30% 80%, #fff, transparent 50%),
-        radial-gradient(1px 1px at 70% 30%, #fff, transparent 50%),
-        radial-gradient(1px 1px at 85% 70%, #fff, transparent 50%),
-        radial-gradient(1px 1px at 55% 55%, #fff, transparent 50%),
-        radial-gradient(1px 1px at 40% 40%, #fff, transparent 50%),
-        radial-gradient(1px 1px at 15% 65%, #fff, transparent 50%),
-        radial-gradient(1px 1px at 90% 15%, #fff, transparent 50%);
+        radial-gradient(1px 1px at 10% 20%, var(--pink), transparent 50%),
+        radial-gradient(1px 1px at 30% 80%, var(--pink), transparent 50%),
+        radial-gradient(1px 1px at 70% 30%, var(--pink), transparent 50%),
+        radial-gradient(1px 1px at 85% 70%, var(--pink), transparent 50%),
+        radial-gradient(1px 1px at 55% 55%, var(--pink), transparent 50%),
+        radial-gradient(1px 1px at 40% 40%, var(--pink), transparent 50%),
+        radial-gradient(1px 1px at 15% 65%, var(--pink), transparent 50%),
+        radial-gradient(1px 1px at 90% 15%, var(--pink), transparent 50%);
       background-size: 800px 800px;
       animation: drift 18s linear infinite;
       filter: blur(.2px);
@@ -94,7 +94,7 @@
       border-radius: 999px;
       background: rgba(255,77,109,.14);
       border: 1px solid rgba(255,77,109,.25);
-      color: rgba(255,255,255,.88);
+      color: var(--pink);
       font-size: 13px;
       letter-spacing:.2px;
       user-select:none;
@@ -143,8 +143,8 @@
     .tile{
       padding: 16px 12px;
       border-radius: 18px;
-      background: rgba(0,0,0,.18);
-      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.4);
+      border: 1px solid rgba(255,255,255,.5);
       text-align:center;
     }
     .num{
@@ -155,7 +155,7 @@
     .lbl{
       margin-top: 6px;
       font-size: 12px;
-      color: rgba(255,255,255,.72);
+      color: var(--muted);
       letter-spacing: .7px;
       text-transform: uppercase;
     }
@@ -174,9 +174,9 @@
       font-weight: 700;
       letter-spacing:.2px;
       transition: transform .12s ease, filter .12s ease, background .12s ease;
-      color: rgba(255,255,255,.92);
-      background: rgba(255,255,255,.10);
-      border: 1px solid rgba(255,255,255,.14);
+      color: var(--txt);
+      background: rgba(255,255,255,.4);
+      border: 1px solid rgba(255,255,255,.5);
       user-select:none;
     }
     button:hover{ transform: translateY(-1px); filter: brightness(1.04); }
@@ -186,12 +186,12 @@
       color: #1a0b12;
     }
     .ghost{
-      background: rgba(0,0,0,.18);
+      background: rgba(255,255,255,.4);
     }
 
     .message{
       padding: 22px 26px 26px;
-      border-top: 1px solid rgba(255,255,255,.10);
+      border-top: 1px solid rgba(255,77,109,.15);
     }
     .message h2{
       margin: 0 0 10px;
@@ -200,7 +200,8 @@
     }
     .message p{
       margin: 0;
-      color: rgba(255,255,255,.84);
+      color: var(--txt);
+      opacity: .9;
       line-height:1.6;
       font-size: 15.5px;
     }
@@ -220,8 +221,8 @@
     .mini{
       padding: 16px;
       border-radius: 22px;
-      background: rgba(255,255,255,.06);
-      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.4);
+      border: 1px solid rgba(255,255,255,.5);
       min-height: 92px;
       position:relative;
       overflow:hidden;
@@ -236,7 +237,7 @@
     }
     .mini .d{
       margin-top: 6px;
-      color: rgba(255,255,255,.74);
+      color: var(--muted);
       font-size: 14px;
       line-height:1.4;
     }
@@ -280,10 +281,10 @@
     .footer{
       margin-top: 18px;
       text-align:center;
-      color: rgba(255,255,255,.55);
+      color: var(--muted);
       font-size: 13px;
     }
-    a{ color: rgba(255,214,165,.95); text-decoration: none; }
+    a{ color: var(--pink); text-decoration: none; }
     a:hover{ text-decoration: underline; }
 
     /* Estilos para el slider de fotos */
@@ -396,7 +397,7 @@
           <button id="closeModal" class="ghost" style="padding:10px 12px; border-radius:14px;">Cerrar ✖</button>
         </div>
         <h2 style="margin:14px 0 8px; font-size:22px;">Hoy quiero decirte esto…</h2>
-        <p style="margin:0; color: rgba(255,255,255,.85); line-height:1.7; font-size: 15.5px;">
+        <p style="margin:0; color: var(--txt); line-height:1.7; font-size: 15.5px;">
           Gracias por ser mi lugar seguro, mi risa favorita y mi paz.  
           Si tuviera que elegir de nuevo, te elegiría a ti — una y mil veces.  
           <br><br>
