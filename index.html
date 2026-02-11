@@ -628,27 +628,99 @@
     document.body.appendChild(jiggly);
 
     function moveJiggly(){
-      // Restamos el tamaño aproximado para que no se salga de la pantalla
       const w = window.innerWidth - 80; 
       const h = window.innerHeight - 80;
       
       const x = Math.floor(Math.random() * w);
       const y = Math.floor(Math.random() * h);
       
+      // Asegurar transición suave para el salto
+      jiggly.style.transition = "top 0.8s cubic-bezier(0.25, 1, 0.5, 1), left 0.8s cubic-bezier(0.25, 1, 0.5, 1)";
       jiggly.style.left = x + "px";
       jiggly.style.top = y + "px";
     }
-    // Posición inicial
     moveJiggly();
-    // Mover al hacer click
-    jiggly.addEventListener("click", (e)=>{
-      e.stopPropagation(); // Evita que se disparen otros eventos de click (como corazones)
+
+    // Lógica de arrastrar (Drag & Drop)
+    let isDragging = false;
+    let startX, startY, initialLeft, initialTop;
+    let hasMoved = false;
+
+    // Eventos Mouse (PC)
+    jiggly.addEventListener("mousedown", (e) => {
+      e.preventDefault();
+      isDragging = true;
+      hasMoved = false;
+      startX = e.clientX;
+      startY = e.clientY;
+      initialLeft = jiggly.offsetLeft;
+      initialTop = jiggly.offsetTop;
       
-      // Cambiar al siguiente GIF
-      jigglyIndex = (jigglyIndex + 1) % jigglyGifs.length;
-      jiggly.src = jigglyGifs[jigglyIndex];
+      // Quitar transición para que siga al mouse al instante
+      jiggly.style.transition = "none";
+      jiggly.style.cursor = "grabbing";
+    });
+
+    window.addEventListener("mousemove", (e) => {
+      if (!isDragging) return;
+      const dx = e.clientX - startX;
+      const dy = e.clientY - startY;
       
-      moveJiggly();
+      // Si se mueve más de 5px, lo consideramos arrastre
+      if (Math.abs(dx) > 5 || Math.abs(dy) > 5) hasMoved = true;
+
+      jiggly.style.left = (initialLeft + dx) + "px";
+      jiggly.style.top = (initialTop + dy) + "px";
+    });
+
+    window.addEventListener("mouseup", () => {
+      if (!isDragging) return;
+      isDragging = false;
+      jiggly.style.cursor = "pointer";
+
+      // Si NO se movió (fue un click), cambiamos GIF y posición random
+      if (!hasMoved) {
+        jigglyIndex = (jigglyIndex + 1) % jigglyGifs.length;
+        jiggly.src = jigglyGifs[jigglyIndex];
+        moveJiggly();
+      }
+    });
+
+    // Eventos Touch (Móvil)
+    jiggly.addEventListener("touchstart", (e) => {
+      isDragging = true;
+      hasMoved = false;
+      const touch = e.touches[0];
+      startX = touch.clientX;
+      startY = touch.clientY;
+      initialLeft = jiggly.offsetLeft;
+      initialTop = jiggly.offsetTop;
+      jiggly.style.transition = "none";
+    }, {passive: false});
+
+    window.addEventListener("touchmove", (e) => {
+      if (!isDragging) return;
+      const touch = e.touches[0];
+      const dx = touch.clientX - startX;
+      const dy = touch.clientY - startY;
+      
+      if (Math.abs(dx) > 5 || Math.abs(dy) > 5) {
+        hasMoved = true;
+        e.preventDefault(); // Evitar scroll mientras arrastras
+      }
+
+      jiggly.style.left = (initialLeft + dx) + "px";
+      jiggly.style.top = (initialTop + dy) + "px";
+    }, {passive: false});
+
+    window.addEventListener("touchend", () => {
+      if (!isDragging) return;
+      isDragging = false;
+      if (!hasMoved) {
+        jigglyIndex = (jigglyIndex + 1) % jigglyGifs.length;
+        jiggly.src = jigglyGifs[jigglyIndex];
+        moveJiggly();
+      }
     });
   </script>
 </body>
