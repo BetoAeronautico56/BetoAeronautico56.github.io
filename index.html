@@ -252,11 +252,29 @@
       transform: translate(-50%, -50%) scale(1);
       animation: floatUp 1.6s ease forwards;
       filter: drop-shadow(0 6px 14px rgba(0,0,0,.25));
+      z-index: 60;
     }
     @keyframes floatUp{
       0%{ opacity:0; transform: translate(-50%, -50%) scale(.7); }
       10%{ opacity:1; }
       100%{ opacity:0; transform: translate(calc(-50% + var(--dx)), calc(-50% - 220px)) scale(1.25); }
+    }
+
+    /* Animación del beso gigante */
+    .big-kiss {
+      position: fixed;
+      left: 50%; top: 50%;
+      transform: translate(-50%, -50%) scale(0);
+      font-size: 100px;
+      pointer-events: none;
+      animation: kissPop 1.6s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+      z-index: 100;
+      filter: drop-shadow(0 10px 20px rgba(0,0,0,0.25));
+    }
+    @keyframes kissPop {
+      0% { opacity: 0; transform: translate(-50%, -50%) scale(0.2) rotate(-15deg); }
+      50% { opacity: 1; transform: translate(-50%, -50%) scale(1.5) rotate(10deg); }
+      100% { opacity: 0; transform: translate(-50%, -50%) scale(2) rotate(0deg); }
     }
 
     .footer{
@@ -351,7 +369,7 @@
         <div class="btnrow">
           <button class="primary" id="surpriseBtn">Abrir sorpresa 💌</button>
           <button class="ghost" id="heartsBtn">Lluvia de corazones 💖</button>
-          <button class="ghost" id="musicBtn">Música (opcional) 🎵</button>
+          <button class="ghost" id="musicBtn">Reproducir ▶️</button>
         </div>
 
         <div class="mini photo-slider">
@@ -523,19 +541,32 @@
     });
 
     document.getElementById("kissBtn").addEventListener("click", ()=>{
-      // pequeño detalle divertido
-      const x = window.innerWidth * (0.4 + Math.random()*0.2);
-      const y = window.innerHeight * 0.55;
-      spawnHeart(x, y);
-      alert("😘 Beso enviado con amor (y con nervios jajaja).");
+      // Animación de beso gigante en lugar de alert
+      const kiss = document.createElement("div");
+      kiss.textContent = "😘";
+      kiss.className = "big-kiss";
+      document.body.appendChild(kiss);
+
+      // Lluvia de corazones extra
+      for(let i=0; i<15; i++){
+        setTimeout(()=>{
+          const x = window.innerWidth/2 + (Math.random()*200 - 100);
+          const y = window.innerHeight/2 + (Math.random()*200 - 100);
+          spawnHeart(x, y);
+        }, i * 80);
+      }
+      
+      // Limpieza
+      setTimeout(() => kiss.remove(), 2000);
     });
 
     /********************
      * MÚSICA (OPCIONAL)
      ********************/
     const audio = document.getElementById("audio");
+    const musicBtn = document.getElementById("musicBtn");
     let playing = false;
-    document.getElementById("musicBtn").addEventListener("click", async ()=>{
+    musicBtn.addEventListener("click", async ()=>{
       // Si no agregas un source al audio, no sonará (es opcional)
       if(!audio.querySelector("source")){
         alert("Para activar música, agrega un <source src='tu-cancion.mp3'> dentro del <audio> en el HTML 🙂");
@@ -545,9 +576,11 @@
         if(!playing){
           await audio.play();
           playing = true;
+          musicBtn.textContent = "Pausar ⏸️";
         }else{
           audio.pause();
           playing = false;
+          musicBtn.textContent = "Reproducir ▶️";
         }
       }catch(err){
         alert("Tu navegador bloqueó el audio automático. Intenta de nuevo con otro click 🙂");
