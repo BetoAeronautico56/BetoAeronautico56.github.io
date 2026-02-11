@@ -300,6 +300,17 @@
       opacity: 0; transition: opacity 1s ease-in-out;
     }
     .photo-slider img.active{ opacity: 1; }
+
+    /* Jigglypuff flotante */
+    .jigglypuff{
+      position: fixed;
+      width: 70px; /* Tamaño adecuado para no estorbar */
+      height: auto;
+      cursor: pointer;
+      z-index: 40; /* Debajo del modal pero visible */
+      transition: top 0.8s cubic-bezier(0.25, 1, 0.5, 1), left 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+      filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2));
+    }
   </style>
 </head>
 
@@ -600,6 +611,45 @@
         slides[currentSlide].classList.add('active');
       }, 5000); // Cambio cada 5 segundos
     }
+
+    /********************
+     * JIGGLYPUFF
+     ********************/
+    const jiggly = document.createElement("img");
+    const jigglyGifs = [
+      "gif/gif 1.gif",
+      "gif/gif 2.gif",
+      "gif/gif 3.gif"
+    ];
+    let jigglyIndex = 0;
+    jiggly.src = jigglyGifs[jigglyIndex];
+    jiggly.className = "jigglypuff";
+    jiggly.alt = "Jigglypuff";
+    document.body.appendChild(jiggly);
+
+    function moveJiggly(){
+      // Restamos el tamaño aproximado para que no se salga de la pantalla
+      const w = window.innerWidth - 80; 
+      const h = window.innerHeight - 80;
+      
+      const x = Math.floor(Math.random() * w);
+      const y = Math.floor(Math.random() * h);
+      
+      jiggly.style.left = x + "px";
+      jiggly.style.top = y + "px";
+    }
+    // Posición inicial
+    moveJiggly();
+    // Mover al hacer click
+    jiggly.addEventListener("click", (e)=>{
+      e.stopPropagation(); // Evita que se disparen otros eventos de click (como corazones)
+      
+      // Cambiar al siguiente GIF
+      jigglyIndex = (jigglyIndex + 1) % jigglyGifs.length;
+      jiggly.src = jigglyGifs[jigglyIndex];
+      
+      moveJiggly();
+    });
   </script>
 </body>
 </html>
